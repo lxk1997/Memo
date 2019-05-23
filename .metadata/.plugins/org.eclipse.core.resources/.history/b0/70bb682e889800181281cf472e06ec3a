@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cling.memo.MainActivity" >
+
+    <Button 
+        android:id = "@+id/ret_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:textColor="@color/white"
+        android:background="@drawable/ic_launcher"
+        />
+    <TextView
+        android:id = "@+id/ret_title" 
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/ret_button"
+        android:layout_alignParentRight="true"
+        android:background="#ff8c00"
+        android:textColor="@color/white"
+        android:text="历史纪录"
+        android:gravity="fill_vertical"
+        android:textSize="30sp"
+        />"
+
+</RelativeLayout>

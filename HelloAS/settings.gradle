@@ -1,0 +1,2 @@
+include ':app', ':skdcamp', ':sdkdcamp', ':skdkcamp', ':kdcamp'
+include ':sDUSTCamp'

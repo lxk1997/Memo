@@ -1,0 +1,55 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* ic_launcher-web.png
+* proguard-project.txt
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => sDUSTCamp\src\main\AndroidManifest.xml
+* assets\ => sDUSTCamp\src\main\assets
+* libs\arm64-v8a\libbmob.so => sDUSTCamp\src\main\jniLibs\arm64-v8a\libbmob.so
+* libs\armeabi-v7a\libbmob.so => sDUSTCamp\src\main\jniLibs\armeabi-v7a\libbmob.so
+* libs\armeabi\libbmob.so => sDUSTCamp\src\main\jniLibs\armeabi\libbmob.so
+* libs\Bmob_Push_1.0.2_20180611.jar => sDUSTCamp\libs\Bmob_Push_1.0.2_20180611.jar
+* libs\BmobSDK_3.6.5_20180709.jar => sDUSTCamp\libs\BmobSDK_3.6.5_20180709.jar
+* libs\mips64\libbmob.so => sDUSTCamp\src\main\jniLibs\mips64\libbmob.so
+* libs\mips\libbmob.so => sDUSTCamp\src\main\jniLibs\mips\libbmob.so
+* libs\MobCommons-2018.0816.1650.jar => sDUSTCamp\libs\MobCommons-2018.0816.1650.jar
+* libs\MobIM_1.0.0.jar => sDUSTCamp\libs\MobIM_1.0.0.jar
+* libs\MobTools-2018.0817.1730.jar => sDUSTCamp\libs\MobTools-2018.0817.1730.jar
+* libs\okio-1.12.0.jar => sDUSTCamp\libs\okio-1.12.0.jar
+* libs\org.apache.http.legacy.jar => sDUSTCamp\libs\org.apache.http.legacy.jar
+* libs\rxandroid-1.2.0.jar => sDUSTCamp\libs\rxandroid-1.2.0.jar
+* libs\rxjava-1.1.6.jar => sDUSTCamp\libs\rxjava-1.1.6.jar
+* libs\SDKWrapper-2018.0801.1824.jar => sDUSTCamp\libs\SDKWrapper-2018.0801.1824.jar
+* libs\SMSSDK-3.2.1.jar => sDUSTCamp\libs\SMSSDK-3.2.1.jar
+* libs\x86\libbmob.so => sDUSTCamp\src\main\jniLibs\x86\libbmob.so
+* libs\x86_64\libbmob.so => sDUSTCamp\src\main\jniLibs\x86_64\libbmob.so
+* proguard-android.txt => sDUSTCamp\proguard-android.txt
+* res\ => sDUSTCamp\src\main\res\
+* src\ => sDUSTCamp\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

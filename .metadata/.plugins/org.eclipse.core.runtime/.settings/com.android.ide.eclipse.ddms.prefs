@@ -1,0 +1,17 @@
+com.android.ide.eclipse.ddms.explorer.data=99
+com.android.ide.eclipse.ddms.explorer.info=103
+com.android.ide.eclipse.ddms.explorer.name=139
+com.android.ide.eclipse.ddms.explorer.permissions=103
+com.android.ide.eclipse.ddms.explorer.size=69
+com.android.ide.eclipse.ddms.explorer.time=55
+com.android.ide.eclipse.ddms.timeOut=10000
+ddms.logcat.auotmonitor.level=error
+ddms.logcat.automonitor.userprompt=true
+eclipse.preferences.version=1
+logcat.view.colsize.Application=189
+logcat.view.colsize.Level=35
+logcat.view.colsize.PID=66
+logcat.view.colsize.TID=66
+logcat.view.colsize.Tag=143
+logcat.view.colsize.Text=748
+logcat.view.colsize.Time=182

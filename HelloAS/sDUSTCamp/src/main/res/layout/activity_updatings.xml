@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_updatings"
+    tools:context="com.example.sdustcamp.MainActivity"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+    
+    <TextView 
+        android:id="@+id/tv_titleUpdatings"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="   动态"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:gravity="center|left"
+        android:background="#0359a2"
+        android:layout_alignParentTop="true"/>
+    
+    <RelativeLayout 
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#fcfcfc"
+        android:layout_below="@id/tv_titleUpdatings">
+        
+        <Button
+       	    android:id="@+id/btn_kdTv"
+       	    android:layout_width="128dp"
+       	    android:layout_height="35dp"
+       	    android:background="#fcfcfc"
+       	    android:layout_centerHorizontal="true"
+       	    android:text="视频科大"
+       	    android:textSize="16sp"
+       	    android:textColor="#5e5e5e" />
+        
+       	<Button
+       	    android:id="@+id/btn_kdNews"
+       	    android:layout_width="127dp"
+       	    android:layout_height="35dp"
+       	    android:layout_toLeftOf="@id/btn_kdTv"
+       	    android:background="#fcfcfc"
+       	    android:text="科大要闻"
+       	    android:textSize="16sp"
+       	    android:textColor="#5e5e5e"/>
+
+       	
+       	<Button
+       	    android:id="@+id/btn_kdNotice"
+       	    android:layout_width="127dp"
+       	    android:layout_height="35dp"
+       	    android:layout_toRightOf="@id/btn_kdTv"
+       	    android:background="#fcfcfc"
+       	    android:text="学校公告"
+       	    android:textSize="16sp"
+       	    android:textColor="#5e5e5e"/>
+       	
+       	</RelativeLayout>
+       	
+    <ListView 
+        android:id="@+id/lv_updatings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_below="@id/ll_title"
+        android:background="#fcfcfc"
+        android:dividerHeight="6dp"
+        android:layout_marginBottom="52dp"/>
+    
+    <RelativeLayout
+        android:id="@+id/ll_memuBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc">
+        
+        <Button
+            android:id="@+id/btn_index"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="首页"
+            android:layout_centerHorizontal="true"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/index"
+            android:background="#fafafc"/>
+        
+        <Button 
+            android:id="@+id/btn_service"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toLeftOf="@id/btn_index"
+            android:text="服务"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/service"
+            android:background="#fafafc"/>
+        
+        <Button 
+            android:id="@+id/btn_updatings"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toLeftOf="@id/btn_service"
+            android:text="动态"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#5e5e5e"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/updatings"
+            android:background="#fafafc"/>
+        
+        
+        <Button
+            android:id="@+id/btn_news"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:text="消息"
+            android:layout_toRightOf="@id/btn_index"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/news"
+            android:background="#fafafc"/>
+        
+        <Button
+            android:id="@+id/btn_mine"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@id/btn_news"
+            android:text="我的"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/mine"
+            android:background="#fafafc"/>
+            
+	</RelativeLayout>
+    
+</RelativeLayout>

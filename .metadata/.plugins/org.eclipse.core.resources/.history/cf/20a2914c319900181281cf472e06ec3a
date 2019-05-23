@@ -1,0 +1,14 @@
+package com.cling.memo;
+
+public class Node {
+	private String title;
+	private String content;
+	private String date;
+	
+	Node(String _title, String _content, String _date) {
+		title = _title;
+		content = _content;
+		date = _date;
+		return;
+	}
+}

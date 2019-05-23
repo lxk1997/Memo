@@ -1,0 +1,280 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_service"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sdustcamp.MainActivity"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+    
+    <TextView 
+        android:id="@+id/tv_titleService"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="   服务"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:gravity="center|left"
+        android:background="#0359a2"
+        android:layout_alignParentTop="true"/>
+    
+    <EditText 
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:layout_below="@id/tv_titleService"
+        android:hint="   全部应用"
+        android:gravity="center|left"
+        android:drawableLeft="@drawable/search"/>
+    
+    <LinearLayout
+        android:id="@+id/ll_myApp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/search"
+        android:background="#fafafc">
+        
+        <TextView
+            android:id="@+id/tc_myApp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:text="我的应用"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:gravity="center|left"/>
+	</LinearLayout>
+	
+    <RelativeLayout
+        android:id="@+id/rl_recentUse"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/ll_myApp"
+        android:layout_marginTop="10dp"
+        android:background="#fafafc">
+        
+        <TextView 
+            android:id="@+id/tv_recentUse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="最近使用"
+            android:gravity="center|left"
+            android:textStyle="bold"/>"
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/rl_allApp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/rl_recentUse"
+        android:layout_marginTop="10dp"
+        android:background="#fafafc">
+        
+        <TextView 
+            android:id="@+id/tv_allApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:text="全部应用"
+            android:gravity="center|left"
+            android:textStyle="bold"/>
+        
+        <Button
+            android:id="@+id/btn_timeTable"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/tv_allApp"
+            android:layout_marginTop="3dp"
+            android:text="课程表"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/timetable"
+            android:background="#fafafc"/>
+        
+        <Button
+            android:id="@+id/btn_2market"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/btn_timeTable"
+            android:layout_marginTop="3dp"
+            android:text="二手市场"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/market"
+            android:background="#fafafc"/>
+        
+        <Button
+            android:id="@+id/btn_mobile"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_toEndOf="@id/btn_2market"
+            android:layout_alignBottom="@id/btn_2market"
+            android:layout_marginTop="3dp"
+            android:text="话费流量"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/mobile"
+            android:background="#fafafc"/>
+        
+        <Button
+            android:id="@+id/btn_stuCardRecharge"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_toEndOf="@id/btn_mobile"
+            android:layout_alignBottom="@id/btn_mobile"
+            android:layout_marginTop="3dp"
+            android:text="校园卡充值"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/stucardrecharge"
+            android:background="#fafafc"/>
+
+        <Button
+            android:id="@+id/btn_stuClass"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/btn_timeTable"
+            android:layout_toEndOf="@+id/btn_timeTable"
+            android:background="#fafafc"
+            android:drawableTop="@drawable/stuclass"
+            android:gravity="center|bottom"
+            android:text="空教室"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btn_mealCard"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/btn_stuClass"
+            android:layout_alignLeft="@+id/btn_stuCardRecharge"
+            android:background="#fafafc"
+            android:drawableTop="@drawable/mealcard"
+            android:gravity="center|bottom"
+            android:text="一卡通"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btn_queryScore"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/btn_mealCard"
+            android:layout_toEndOf="@+id/btn_mealCard"
+            android:background="#fafafc"
+            android:drawableTop="@drawable/queryscore"
+            android:gravity="center|bottom"
+            android:text="查成绩"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btn_library"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/btn_queryScore"
+            android:layout_toEndOf="@+id/btn_queryScore"
+            android:background="#fafafc"
+            android:drawableTop="@drawable/library"
+            android:gravity="center|bottom"
+            android:text="图书馆"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btn_cet46"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/btn_library"
+            android:layout_toEndOf="@+id/btn_library"
+            android:background="#fafafc"
+            android:drawableTop="@drawable/cet46"
+            android:gravity="center|bottom"
+            android:text="四六级"
+            android:textColor="#5e5e5e"
+            android:textSize="10dp" />
+        
+    </RelativeLayout>
+            "
+    
+    <RelativeLayout
+        android:id="@+id/ll_memuBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc">
+        
+        <Button
+            android:id="@+id/btn_index"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="首页"
+            android:layout_centerHorizontal="true"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/index"
+            android:background="#fafafc"/>
+        
+        <Button 
+            android:id="@+id/btn_service"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toLeftOf="@id/btn_index"
+            android:text="服务"
+            android:textColor="#5e5e5e"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/service"
+            android:background="#fafafc"/>
+        
+        <Button 
+            android:id="@+id/btn_updatings"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toLeftOf="@id/btn_service"
+            android:text="动态"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/updatings"
+            android:background="#fafafc"/>
+        
+        
+        <Button
+            android:id="@+id/btn_news"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:text="消息"
+            android:layout_toRightOf="@id/btn_index"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/news"
+            android:background="#fafafc"/>
+        
+        <Button
+            android:id="@+id/btn_mine"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@id/btn_news"
+            android:text="我的"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/mine"
+            android:background="#fafafc"/>
+            
+	</RelativeLayout>
+    
+</RelativeLayout>

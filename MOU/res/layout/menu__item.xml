@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <Button
+        android:id="@+id/share"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:background="@drawable/bt_shape"
+        android:text="分享"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="#a3a3a3"
+        />
+    
+    <Button
+        android:id="@+id/collect"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/share"
+        android:background="@drawable/bt_shape"
+        android:text="收藏"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="#a3a3a3"
+        />
+    
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/collect"
+        android:background="@drawable/bt_shape"
+        android:text="删除"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="#a3a3a3"
+        />
+    
+
+</RelativeLayout>

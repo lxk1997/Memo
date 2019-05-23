@@ -1,0 +1,134 @@
+package com.cling.memo;
+
+import com.cling.memo.MainActivity;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class ItemActivity extends Activity {
+	
+	private Button ret_button_1;//编辑界面返回按钮
+	private Button edit_sure;//编辑界面确定按钮
+	private TextView ret_title_1;//编辑界面标题
+	private TextView date;//时间日期
+	private EditText editText;//内容编辑
+	
+	private MySQLiteUtil mySQLiteUtil;//辅助数据库
+	private SQLiteDatabase db;//数据库
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_item);
+		
+		ret_button_1 = (Button)findViewById(R.id.ret_button_1);
+		ret_title_1 = (TextView)findViewById(R.id.ret_title_1);
+		edit_sure = (Button)findViewById(R.id.edit_sure);
+		editText = (EditText)findViewById(R.id.editText);
+		date = (TextView)findViewById(R.id.date);
+		
+		ret_button_1.setOnClickListener(new ButtonListener());
+		edit_sure.setOnClickListener(new ButtonListener());
+		
+		EditClickListener editListener = new EditClickListener();
+		editText.setOnClickListener(editListener);
+		
+		// 打开或创建数据库
+		mySQLiteUtil = new MySQLiteUtil(ItemActivity.this, "memo.db", null,1);
+		db = mySQLiteUtil.getReadableDatabase();
+		int id = getIntent().getIntExtra("id", 0);
+		Cursor cursor = db.rawQuery("select * from user_tb where _id=?", new String[] {id+""});
+//		int contentIndex = cursor.getColumnIndex("Content");
+//		String content = cursor.getString(contentIndex);
+//		int dateIndex = cursor.getColumnIndex("time");
+//		String time = cursor.getString(dateIndex);
+//		date.setText(time);
+//		editText.setText(content);
+	
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	//按钮点击事件
+	class ButtonListener implements OnClickListener {
+
+		@Override
+		public void onClick(View view) {
+			if(view.getId() == R.id.ret_button_1) {
+				Intent intent = new Intent(ItemActivity.this, MainActivity.class); 
+				startActivity(intent);
+				finish();
+			}
+			else if(view.getId() == R.id.edit_sure) {
+				Intent intent = new Intent(ItemActivity.this, MainActivity.class);
+//				node.setContent(editText.getText().toString());
+//				intent.putExtra("ret_node", node);
+				startActivity(intent);
+				finish();
+			}
+		}
+	}
+	
+	//编辑栏点击事件
+	class EditClickListener implements OnClickListener {
+
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			ret_title_1.setText("编辑备忘录");
+			ret_title_1.setGravity(Gravity.CENTER);
+			RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ret_title_1.getLayoutParams();
+			params.width = dip2px(ItemActivity.this, 260);
+			params.height = dip2px(ItemActivity.this, 50);
+			ret_title_1.setLayoutParams(params);
+			editText.setFocusable(true);
+			editText.setCursorVisible(true);
+			editText.setFocusableInTouchMode(true);
+			editText.requestFocus();
+			
+		}
+
+	}
+	
+	//dp转px
+	public int dip2px(Context context,float dipValue) 
+	{
+		Resources r = context.getResources();
+		return (int) TypedValue.applyDimension(
+				TypedValue.COMPLEX_UNIT_DIP, dipValue, r.getDisplayMetrics());
+	}
+
+}

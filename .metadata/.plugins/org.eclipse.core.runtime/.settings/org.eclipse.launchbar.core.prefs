@@ -1,0 +1,9 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:ExmActionbar,org.eclipse.launchbar.core.descriptorType.default\:Memo,org.eclipse.launchbar.core.descriptorType.default\:MemoDemo,org.eclipse.launchbar.core.descriptorType.default\:MOU,org.eclipse.launchbar.core.descriptorType.default\:FileSelectorTest,org.eclipse.launchbar.core.descriptorType.default\:settings,org.eclipse.launchbar.core.descriptorType.default\:Setting
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:ExmActionbar/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:ExmActionbar/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Memo/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Memo/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

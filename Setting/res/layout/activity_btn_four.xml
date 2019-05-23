@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f7ffff"
+    
+     >
+	<Button 
+        android:id="@+id/return_button_4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_ret"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        /> 
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#6BD5E6"
+        android:layout_toRightOf="@id/return_button_4"
+        android:gravity="center|left"
+        android:text="         选择文件保存位置"
+        android:textColor="#fff"
+        android:textSize="18sp"
+     />
+    <TextView 
+        android:id="@+id/editPath"
+        android:layout_width="280dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tv5"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="20sp"
+        />
+    <Button 
+        android:id="@+id/pathButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv5"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@id/editPath"
+        android:background="@drawable/sure"
+        />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/editPath"
+        android:layout_alignLeft="@id/editPath"
+        android:layout_alignRight="@id/editPath" >
+
+</ListView>
+    
+</RelativeLayout>

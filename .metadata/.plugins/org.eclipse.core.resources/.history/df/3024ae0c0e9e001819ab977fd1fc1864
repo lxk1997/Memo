@@ -1,0 +1,271 @@
+package com.cling.memo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
+
+import com.cling.memo.MySQLiteUtil;
+import com.cling.memo.NodeAdapter.ViewHolder;
+import com.cling.memo.R.layout;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/*历史记录主页面显示类
+ * 功能实现：实现返回主菜单、显示历史记录条目、点击任一条目进入编辑界面、长点击任意条目实现多选删除
+ * 1.调用ret_button监听类返回主页面
+ * 2.数据库通过nodeInit()初始了5个数据，每次打开软件都进行初始化，连接添加功能之后删除即可
+ */
+public class MainActivity extends Activity implements OnItemClickListener, OnItemLongClickListener {
+	
+	private Button ret_button;//返回主页面
+	private Button cancel_button;//取消全选操作
+	private Button delete_button;//删除
+	private Button selectAll_button;//全选
+	private TextView ret_title;//返回导航栏
+	private ListView txt_list;//备忘录表
+	private MySQLiteOperator mySQLiteOperator;//数据库操作
+	ArrayList<Node> source;
+	private Set<Integer> node_delete;
+	private NodeAdapter mAdapter;//适配器
+	private Boolean isMultiSelect;//是否多选
+	private HashMap<Integer, Integer> isCheckBoxVisible;// 用来记录是否显示checkBox
+	private HashMap<Integer, Boolean> isChecked;// 用来记录是否被选中
+	private CheckBox cb;
+	
+	public int itemId;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		ret_button = (Button)findViewById(R.id.ret_button);
+		cancel_button = (Button)findViewById(R.id.cancel_button);
+		delete_button = (Button)findViewById(R.id.deleteall_button);
+		selectAll_button = (Button)findViewById(R.id.selectall_button);
+		ret_title = (TextView)findViewById(R.id.ret_title);
+		txt_list = (ListView)findViewById(R.id.txt_list);
+		cb = (CheckBox)findViewById(R.id.cb_select);
+		
+		node_delete = new HashSet<Integer>();
+		isMultiSelect = false;
+		
+		//打开或新建数据库
+		mySQLiteOperator = new MySQLiteOperator(this);
+		if(Node.id == 0)nodeInit();
+		
+		ret_button.setOnClickListener(new ButtonListener());
+		cancel_button.setOnClickListener(new ButtonListener());
+		delete_button.setOnClickListener(new ButtonListener());
+		selectAll_button.setOnClickListener(new ButtonListener());
+		
+		txt_list.setOnItemClickListener(this);
+		txt_list.setOnItemLongClickListener(this);
+		
+		source = mySQLiteOperator.qureyall();
+		mAdapter = new NodeAdapter(MainActivity.this,R.layout.node_item,source);
+		txt_list.setAdapter(mAdapter);
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	class ButtonListener implements OnClickListener {
+
+		@Override
+		public void onClick(View view) {
+			
+			switch (view.getId()) {
+			case R.id.ret_button://返回主菜单
+				
+			break;
+			case R.id.cancel_button:
+				isMultiSelect = false;
+				ret_title.setText("历史记录");
+				node_delete.clear();
+				for (int i = 0; i < txt_list.getCount(); i++) {
+					//RelativeLayout v = (RelativeLayout)txt_list.getChildAt(i);
+					RelativeLayout rl = (RelativeLayout)txt_list.getAdapter().getView(i, null, null);
+					cb = (CheckBox)rl.getChildAt(2);
+					//cb = (CheckBox)rl.findViewById(R.id.cb_select);
+					cb.setVisibility(4);
+					cb.setChecked(false);
+				}
+				cancel_button.setVisibility(8);
+				delete_button.setVisibility(8);
+				selectAll_button.setVisibility(8);
+			break;
+			case R.id.deleteall_button:
+				for(Integer i : node_delete)
+					mySQLiteOperator.delete(i);
+				Toast.makeText(MainActivity.this, "删除备忘录成功", Toast.LENGTH_SHORT).show();
+				source = mySQLiteOperator.qureyall();
+				mAdapter = new NodeAdapter(MainActivity.this,R.layout.node_item,source);
+				txt_list.setAdapter(mAdapter);
+				cancel_button.callOnClick();
+			break;
+			case R.id.selectall_button:
+				for(int i = 0; i < txt_list.getCount(); i++) {
+					RelativeLayout rl = (RelativeLayout)txt_list.getAdapter().getView(i, null, null);
+					//RelativeLayout v = (RelativeLayout)txt_list.getChildAt(i);
+					cb = (CheckBox)rl.getChildAt(2);
+					//cb = (CheckBox)rl.findViewById(R.id.cb_select);
+					cb.setChecked(true);
+					Node node = source.get(i);
+					int nid = mySQLiteOperator.seartch(node);
+					node_delete.add(nid);
+				}
+				ret_title.setText("共选择了"+ node_delete.size()+"项");
+			break;
+			}	
+		}	
+	}
+	
+	
+	//点击list_item，获得数据库中该item的_id，传给下一个activity
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		if(!isMultiSelect) {
+			Node node = source.get(position);
+			int nid = mySQLiteOperator.seartch(node);
+			Intent intent = new Intent(MainActivity.this, ItemActivity.class); 
+			intent.putExtra("id", nid);
+			startActivity(intent);
+			finish();
+		} else {
+			cb = (CheckBox)view.findViewById(R.id.cb_select);
+			Node node = source.get(position);
+			int nid = mySQLiteOperator.seartch(node);
+			if(cb.isChecked()) {
+				cb.setChecked(false);
+				node_delete.remove(nid);
+			} else {
+				cb.setChecked(true);
+				node_delete.add(nid);
+			}
+			ret_title.setText("共选择了"+ node_delete.size()+"项");
+		}
+		return;
+    }
+	
+	@Override
+	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+		// TODO Auto-generated method stub
+		if(isMultiSelect) return true;
+		isMultiSelect = true;
+		for (int i = 0; i < txt_list.getCount(); i++) {
+			View rl = (View)txt_list.getAdapter().getView(i, null, null);
+			//RelativeLayout v =(RelativeLayout) txt_list.getChildAt(i);
+			//cb = (CheckBox)rl.getChildAt(2);
+			cb = (CheckBox)rl.findViewById(R.id.cb_select);
+			cb.setVisibility(rl.VISIBLE);
+		}
+		// 根据position，设置ListView中对应的CheckBox为选中状态
+		cancel_button.setVisibility(0);
+		delete_button.setVisibility(0);
+		selectAll_button.setVisibility(0);
+		cb = (CheckBox)view.findViewById(R.id.cb_select);
+		cb.setChecked(true);
+		Node node = source.get(position);
+		int nid = mySQLiteOperator.seartch(node);
+		node_delete.add(nid);
+		ret_title.setText("共选择了"+ node_delete.size()+"项");
+		return true;
+	}
+	
+	public void nodeInit() {
+		// TODO Auto-generated method stub
+		Node node = new Node("熊大", "asdadasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdsadasdasdsa", "1月2日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("俺", "qqqq", "2月1日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("要", "fdsfds", "2月3日", "2018年2月3日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("吃", "jhjhgj", "2月4日", "2018年2月4日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("蜂蜜", "cxzzxc", "2月5日", "2018年2月5日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("1", "asdadasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdsadasdasdsa", "1月2日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("2", "qqqq", "2月1日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("3", "fdsfds", "2月3日", "2018年2月3日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("4", "jhjhgj", "2月4日", "2018年2月4日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("5", "cxzzxc", "2月5日", "2018年2月5日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("6", "asdadasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdsadasdasdsa", "1月2日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("7", "qqqq", "2月1日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("8", "fdsfds", "2月3日", "2018年2月3日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("9", "jhjhgj", "2月4日", "2018年2月4日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("10", "cxzzxc", "2月5日", "2018年2月5日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("11", "asdadasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdsadasdasdsa", "1月2日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("12", "qqqq", "2月1日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("15", "fdsfds", "2月3日", "2018年2月3日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("14", "jhjhgj", "2月4日", "2018年2月4日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("15", "cxzzxc", "2月5日", "2018年2月5日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("16", "asdadasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdsadasdasdsa", "1月2日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("17", "qqqq", "2月1日", "2018年1月2日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("18", "fdsfds", "2月3日", "2018年2月3日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("19", "jhjhgj", "2月4日", "2018年2月4日 22:49");
+		mySQLiteOperator.add(node);
+		node = new Node("20", "cxzzxc", "2月5日", "2018年2月5日 22:49");
+		mySQLiteOperator.add(node);
+	}
+	
+}

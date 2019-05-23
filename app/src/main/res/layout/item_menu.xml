@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="170dp"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="left"
+    android:background="@color/colorBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorStyle"
+        android:gravity="center">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_marginTop="30dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:riv_oval="true"
+            android:src="@drawable/img_boy"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp">
+
+        <ImageButton
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:background="#00000000"
+            android:src="@drawable/ic_sc"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:paddingLeft="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="我的收藏"
+            android:gravity="center|left"
+            android:textSize="27sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp">
+
+        <ImageButton
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:background="#00000000"
+            android:src="@drawable/ic_lsju"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:paddingLeft="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="历史记录"
+            android:gravity="center|left"
+            android:textSize="27sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp">
+
+        <ImageButton
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:background="#00000000"
+            android:src="@drawable/ic_sz"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:paddingLeft="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="系统设置"
+            android:gravity="center|left"
+            android:textSize="27sp"/>
+    </LinearLayout>
+
+</LinearLayout>

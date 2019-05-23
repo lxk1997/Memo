@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "27.0.3"
+
+    defaultConfig {
+        applicationId "com.example.sdustcamp"
+        minSdkVersion 22
+        targetSdkVersion 22
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'proguard-android.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/Bmob_Push_1.0.2_20180611.jar')
+    compile files('libs/BmobSDK_3.6.5_20180709.jar')
+    compile files('libs/MobCommons-2018.0816.1650.jar')
+    compile files('libs/MobIM_1.0.0.jar')
+    compile files('libs/MobTools-2018.0817.1730.jar')
+    compile files('libs/okio-1.12.0.jar')
+    compile files('libs/org.apache.http.legacy.jar')
+    compile files('libs/rxandroid-1.2.0.jar')
+    compile files('libs/rxjava-1.1.6.jar')
+    compile files('libs/SDKWrapper-2018.0801.1824.jar')
+    compile files('libs/SMSSDK-3.2.1.jar')
+}

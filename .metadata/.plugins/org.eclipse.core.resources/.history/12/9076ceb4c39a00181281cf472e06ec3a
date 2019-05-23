@@ -1,0 +1,67 @@
+package com.cling.memo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+public class MySQLiteOperator {
+
+	private MySQLiteUtil mySQLiteUtil;//辅助数据库
+	private SQLiteDatabase db;//数据库
+	
+	public MySQLiteOperator(Context context) {
+		mySQLiteUtil = new MySQLiteUtil(context, "memo.db", null,1);
+		db = mySQLiteUtil.getWritableDatabase();
+	}
+	
+	//add
+	public void add(Node node) {
+		db.execSQL("insert into user_tb values(null,?,?,?,?)", new String[] {node.getTitle(), node.getContent(),
+				node.getDate(), node.getTime()});
+	}
+	
+	//update
+	public void update(Node node) {
+		db.execSQL("update user_tb set title=?,content=?,date=? where time=?",new String[] {node.getTitle(), node.getContent(),
+				node.getDate(), node.getTime()});
+	}
+	
+	//delete
+	public void delete(int id) {
+		db.execSQL("delete from user_tb where _id=?", new Object[] {id});
+	}
+	
+	//query
+	public Node query(int id) {
+		Node node = new Node();
+		Cursor cursor = db.rawQuery("select * from user_tb where _id=?", new String[] {id+""});
+		while (cursor.moveToNext()) {
+			node.setTitle(cursor.getString(1));
+			node.setContent(cursor.getString(2));
+			node.setDate(cursor.getString(3));
+			node.setTime(cursor.getString(4));
+		}
+		cursor.close();
+		return node;
+	}
+	
+	//queryall
+	public ArrayList<Node> qureyall() {
+		ArrayList<Node> records = new ArrayList<Node>(); // 自定义适配器初始化
+		Cursor cursor = db.rawQuery("select * from user_tb", null); // 查询全部数据
+		while (cursor.moveToNext()) {
+			Node node = new Node();
+			node.setTitle(cursor.getString(1));
+			node.setContent(cursor.getString(2));
+			node.setDate(cursor.getString(3));
+			node.setTime(cursor.getString(4));
+			records.add(node);
+		}
+		cursor.close();
+		return records;
+	}
+}

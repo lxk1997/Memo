@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sdustcamp.MainActivity"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+    
+    <TextView 
+        android:id="@+id/tv_registTitle"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:drawableLeft="@drawable/arrowleft"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:background="#fafafc"
+        android:gravity="center|left"
+        android:layout_alignParentTop="true"/>
+    
+  	<RelativeLayout
+  	    android:id="@+id/rl_regist"
+  	    android:layout_width="match_parent"
+  	    android:layout_height="50dp"
+  	    android:layout_below="@id/tv_registTitle"
+  	    android:background="#fafafc"
+  	    android:layout_marginTop="7dp">
+  	    
+  	    <Button
+  	        android:id="@+id/btn_registPhone"
+  	        android:layout_width="193dp"
+  	        android:layout_height="50dp"
+  	        android:layout_alignParentLeft="true"
+  	        android:background="#fafafc"
+  	        android:text="手机号注册"
+  	        android:textColor="#5e5e5e"/>
+  	    <Button
+  	        android:id="@+id/btn_registEmail"
+  	        android:layout_width="193dp"
+  	        android:layout_height="50dp"
+  	        android:layout_alignParentRight="true"
+  	        android:background="#fafafc"
+  	        android:text="邮箱注册"
+  	        android:textColor="#5e5e5e"/>
+  	</RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_registPhone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f0eef4"
+        android:layout_below="@id/rl_regist"
+        android:layout_marginTop="7dp">
+        
+        <EditText 
+            android:id="@+id/et_phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:hint="手机号"
+        	android:maxLength="11"
+        	android:textColor="#5e5e5e"
+        	android:drawableLeft="@drawable/stuphone"
+        	android:drawablePadding="10dp"
+        	android:singleLine="true"/>
+        
+        <EditText 
+            android:id="@+id/et_phoneKey"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:password="true"
+            android:hint="密码"
+        	android:maxLength="15"
+        	android:textColor="#5e5e5e"
+        	android:layout_below="@id/et_phoneNum"
+        	android:drawableLeft="@drawable/keyl"
+        	android:drawablePadding="10dp"
+        	android:singleLine="true"/>
+        
+        <EditText 
+            android:id="@+id/et_phoneModify"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:hint="验证码"
+            android:gravity="center"
+            android:maxLength="6"
+            android:textColor="#5e5e5e"
+            android:layout_below="@id/et_phoneKey"
+            android:singleLine="true"/>
+        
+        <Button
+            android:id="@+id/btn_phoneModify"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="15dp"
+            android:text="点击发送验证码"
+            android:background="#c1c1c1"
+            android:layout_toRightOf="@id/et_phoneModify"
+            android:layout_alignBottom="@id/et_phoneModify"/>
+        
+        <Button 
+            android:id="@+id/btn_phoneRegist"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="注册"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:textColor="#fff"
+            android:background="#0359a2"
+            android:layout_below="@id/et_phoneModify"
+            android:layout_marginTop="7dp"/>
+        
+    </RelativeLayout>
+
+</RelativeLayout>

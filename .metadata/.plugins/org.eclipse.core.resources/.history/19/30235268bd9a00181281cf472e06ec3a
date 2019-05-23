@@ -1,0 +1,32 @@
+package com.cling.memo;
+
+import android.content.Context;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class MySQLiteUtil extends SQLiteOpenHelper {
+
+	public MySQLiteUtil(Context context, String name, CursorFactory factory, int version
+			) {
+		super(context, name, factory, version);
+		// TODO Auto-generated constructor stub
+	}
+	
+	String CREATE_TABLE_SQL = "create table user_tb(_id integer primary key autoincrement,title,content,date, time)";
+
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		// TODO Auto-generated method stub
+		db.execSQL(CREATE_TABLE_SQL); 
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+		// TODO Auto-generated method stub
+		String oldVersion = null;
+		System.out.print("-----" + oldVersion + "-----");
+	}
+
+}

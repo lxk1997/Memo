@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_main"
+    tools:context="com.example.sdustcamp.MainActivity"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+    
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="首页"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="#0359a2"
+        android:layout_alignParentTop="true"/>
+
+    <RelativeLayout
+        android:id="@+id/ll_memuBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc">
+        
+        <Button
+            android:id="@+id/btn_index"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="首页"
+            android:layout_centerHorizontal="true"
+            android:textColor="#5e5e5e"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/index"
+            android:background="#fafafc"/>
+        
+        <Button 
+            android:id="@+id/btn_service"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toLeftOf="@id/btn_index"
+            android:text="服务"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/service"
+            android:background="#fafafc"/>
+        
+        <Button 
+            android:id="@+id/btn_updatings"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toLeftOf="@id/btn_service"
+            android:text="动态"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/updatings"
+            android:background="#fafafc"/>
+        
+        
+        <Button
+            android:id="@+id/btn_news"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:text="消息"
+            android:layout_toRightOf="@id/btn_index"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/news"
+            android:background="#fafafc"/>
+        
+        <Button
+            android:id="@+id/btn_mine"
+            android:layout_width="76dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@id/btn_news"
+            android:text="我的"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/mine"
+            android:background="#fafafc"/>
+            
+	</RelativeLayout>
+
+</RelativeLayout>

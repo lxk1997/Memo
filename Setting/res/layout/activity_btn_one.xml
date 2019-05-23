@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f7ffff"
+    >
+
+    <Button 
+        android:id="@+id/return_button_1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_ret"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        />     
+	<TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#6BD5E6"
+        android:layout_toRightOf="@id/return_button_1"
+        android:gravity="center|left"
+        android:text="         选择默认模式"
+        android:textColor="#fff"
+        android:textSize="18sp"
+     />
+    
+    <RadioGroup
+        android:id="@+id/rg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/tv2"
+        >
+
+    <RadioButton
+        android:id="@+id/rb1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:gravity="center|left"
+        android:text="文本模式"
+        android:textColor="#6BD5E6"
+        android:drawableLeft="@drawable/note1"
+        android:drawablePadding="14dp"
+        android:textSize="16sp" 
+        android:checked="true"
+        android:paddingLeft="4dp"
+        />
+    <RadioButton
+        android:id="@+id/rb2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:drawableLeft="@drawable/audio1"
+        android:layout_below="@id/rb1"
+        android:gravity="center|left"
+        android:drawablePadding="14dp"
+        android:text="录音模式"
+        android:textColor="#6BD5E6"
+        android:textSize="16sp" 
+        android:paddingLeft="4dp"
+        />
+    </RadioGroup>
+
+</RelativeLayout>

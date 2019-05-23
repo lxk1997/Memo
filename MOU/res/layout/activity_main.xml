@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7ffff"
+    tools:context="com.cling.memo.MainActivity"
+    android:fitsSystemWindows="true" >
+
+    <Button
+        android:id="@+id/ret_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/ic_ret"
+        />
+    
+    <TextView 
+        android:id="@+id/ret_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/ret_button"
+        android:text="历史记录"
+        android:background="#6bd5e6"
+        android:textColor="#ffffff"
+       	android:textSize="25sp"
+       	android:gravity="center_vertical|left"
+        />
+    <Button 
+        android:id="@+id/txt_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/ret_title"
+        android:gravity="center|left"
+        android:background="#f7ffff"
+        android:drawableLeft="@drawable/note32"
+        android:drawableRight="@drawable/ic_next"
+        android:textColor="#696969"
+        
+        />
+    <Button 
+        android:id="@+id/audio_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/txt_button"
+        android:gravity="center|left"
+        android:background="#f7ffff"
+        android:drawableLeft="@drawable/aud32"
+        android:drawableRight="@drawable/ic_next"
+        android:textColor="#696969"
+        
+        />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+package com.cling.memo;
+
+public class Node {
+	private String content;
+	private String date;
+	
+	public Node(String _content, String _date) {
+		this.content = _content;
+		this.date = _date;
+	}
+
+	public String getContent() {
+		// TODO Auto-generated method stub
+		return content;
+	}
+
+	public String getDate() {
+		// TODO Auto-generated method stub
+		return date;
+	}
+	
+}

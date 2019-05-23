@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cling.memo.MainActivity" >
+
+    <Button
+        android:id="@+id/ret_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/ic_ret"
+        />
+    
+    <TextView 
+        android:id="@+id/ret_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/ret_button"
+        android:text="历史纪录"
+        android:background="#ff9700"
+        android:textColor="#ffffff"
+       	android:textSize="25sp"
+       	android:gravity="center"
+        />
+    
+    <Spinner
+        android:id="@+id/txt_spinner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/ret_title"
+        android:background="#ffffff"
+        style="@style/Widget.Spinner"
+        />
+    <Spinner
+        android:id="@+id/aud_spinner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txt_spinner"
+        android:background="#ffffff"
+        style="@style/Widget.Spinner"
+        />
+
+</RelativeLayout>
